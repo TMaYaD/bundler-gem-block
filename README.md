@@ -1,15 +1,17 @@
-# BundlerGemBlock
+# Bundle Gem Block
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/bundler_gem_block`. To experiment with that code, run `bin/console` for an interactive prompt.
+Ever wanted to keep your dependencies together with their plugins but `rubocop` complained about keeping your `Gemfile` sorted?
 
-TODO: Delete this and the text above, and describe your gem
+In most cases the plugins use the gem name as prefix.(Ex: `guard-rspec`, `rspec-rails`) But sometimes they don't. Well this is a simple hack to help with just that. `gem` directive can now take a block where you can specify other related dependencies.
+
+The blocks are only an organisational tool and nothing special.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this line to the beginning of your application's Gemfile:
 
 ```ruby
-gem 'bundler_gem_block'
+plugin 'bundler_gem_block'
 ```
 
 And then execute:
@@ -18,11 +20,17 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install bundler_gem_block
+    $ bundle plugin install bundler_gem_block
 
 ## Usage
 
-TODO: Write usage instructions here
+Add optional blocks to your `gem` directives
+
+```Gemfile
+gem 'capybara' do
+  gem 'apparition'
+end
+```
 
 ## Development
 
